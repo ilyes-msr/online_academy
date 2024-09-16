@@ -18,7 +18,7 @@
               <!--the div below is hidden on small screens  -->
               <div class="hidden-small">
                   <p class="header-p">We offer high quality courses on web development, data science and cloud computing</p>
-                  <a class="btn btn-secondary" href="contact.html">Start Learning</a>
+                  <a class="btn btn-secondary" href="#courses">Start Learning</a>
               </div>
               <!--/hidden-small -->
             </div>

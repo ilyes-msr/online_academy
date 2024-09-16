@@ -5,6 +5,9 @@
 @section('content')
 
   @include('partials.showcase')
+
+  @include('partials.courses')
+
   @include('partials.blog')
         
 @endsection
