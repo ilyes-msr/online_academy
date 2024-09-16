@@ -4,5 +4,6 @@
 return [
   'language' => 'اللغة',
   'arabic' => 'العربية',
-  'english' => 'الإنجليزية'
+  'english' => 'الإنجليزية',
+  'latest_blog_posts' => 'آخر مقالاتنا'
 ];

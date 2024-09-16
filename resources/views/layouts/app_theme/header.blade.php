@@ -33,7 +33,7 @@
         <div class="container ">
            <!-- logo -->
            <a class="nav-brand" href="{{url('/')}}">
-           <img src="{{asset('theme_assets/img/logo.png')}}" alt="" class="img-fluid">
+           <img src="{{asset('theme_assets/img/logo.png')}}" alt="" class="img-fluid" style="max-height: 86px;">
            </a>
            <!-- Navbar toggler -->
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,56 +45,29 @@
               <ul class="navbar-nav ml-auto">
                  <!-- menu item -->
                  <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home
+                    <a class="nav-link" href="{{url('/')}}">{{__('site.home')}}
                     </a>
                  </li>
-                 <!-- menu item -->
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="services-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Services
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{url('/')}}">
+                      {{__('site.courses')}}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="services-dropdown">
-                       <a class="dropdown-item" href="services.html">Services Style 1</a>
-                       <a class="dropdown-item" href="services2.html">Services Style 2</a>
-                       <a class="dropdown-item" href="services-single.html">Services Single</a>
-                    </div>
-                 </li>
-                 <!-- menu item -->
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="about-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    About
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="about-dropdown">
-                       <a class="dropdown-item" href="about.html">About Style 1</a>
-                       <a class="dropdown-item" href="about2.html">About Style 2</a>
-                       <a class="dropdown-item" href="team.html">Our Team</a>
-                       <a class="dropdown-item" href="team-single.html">Team Single Page</a>
-                       <a class="dropdown-item" href="careers.html">Careers</a>
-                       <a class="dropdown-item" href="pricing.html">Pricing</a>
-                    </div>
-                 </li>
-                 <!-- menu item -->
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="gallery-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Gallery
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="gallery-dropdown">
-                       <a class="dropdown-item" href="gallery.html">Gallery Style 1</a>
-                       <a class="dropdown-item" href="gallery2.html">Gallery Style 2</a>
-                       <a class="dropdown-item" href="gallery3.html">Gallery Style 3</a>
-                    </div>
-                 </li>
-                 <!-- menu item -->
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="contact-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Contact
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="contact-dropdown">
-                       <a class="dropdown-item" href="contact.html">Contact Style 1</a>
-                       <a class="dropdown-item" href="contact2.html">Contact Style 2</a>
-                       <a class="dropdown-item" href="contact3.html">Contact Style 3</a>
-                    </div>
-                 </li>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/')}}">
+                    {{__('site.blog')}}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/')}}">
+                    {{__('site.login')}}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url('/')}}">
+                    {{__('site.register')}}
+                  </a>
+                </li>
                  <!-- menu item -->
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -103,9 +76,11 @@
                     <div class="dropdown-menu" aria-labelledby="others-dropdown">
 
                        <a class="dropdown-item {{ App::getLocale() == 'ar' ? 'active-language' : '' }}" href="{{ App::getLocale() == 'ar' ? '#' : route('lang.switch', ['locale' => 'ar']) }}">
-                        {{__('site.arabic')}}
+                        العربية
                        </a>
-                       <a class="dropdown-item {{ App::getLocale() == 'en' ? 'active-language' : '' }}" href="{{ App::getLocale() == 'en' ? '#' : route('lang.switch', ['locale' => 'en']) }}">{{__('site.english')}}</a>
+                       <a class="dropdown-item {{ App::getLocale() == 'en' ? 'active-language' : '' }}" href="{{ App::getLocale() == 'en' ? '#' : route('lang.switch', ['locale' => 'en']) }}">
+                        English
+                       </a>
                     </div>
                  </li>
               </ul>
