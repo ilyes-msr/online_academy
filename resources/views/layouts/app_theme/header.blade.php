@@ -59,12 +59,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('/')}}">
+                  <a class="nav-link" href="{{route('login')}}">
                     {{__('site.login')}}
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('/')}}">
+                  <a class="nav-link" href="{{route('register')}}">
                     {{__('site.register')}}
                   </a>
                 </li>

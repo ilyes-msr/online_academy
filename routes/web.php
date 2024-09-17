@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,7 @@ Route::middleware([
 });
 
 Route::get('lang/{locale}', [LanguageController::class, 'switchLang'])->name('lang.switch');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
