@@ -1,80 +1,41 @@
 <div class="sidebar"">
   <div class="sidebar-brand">
-    <h2>
-      <span class="lab la-accusoft"> <span>أكوسوفت</span>
-        </span>
+    <h2>        
+      <img src="{{asset('theme_assets/img/logo.png')}}" alt="" style="width: 49px; border-radius: 10px">
     </h2>
   </div>
   <div class="sidebar-menu">
     <ul>
       <li>
-        <a href="" class="active"><span class="las la-igloo"></span>
-        <span>لوحة التحكم</span></a>
-
-        
-      </li>
-      <li>
-        <a href=""><span class="las la-users"></span>
-        <span>الامتحانات</span></a>
-        <ul>
-          <li>
-            <a href=""><span class="las la-receipt"></span>
-              <span>الامتحانات عن بعد
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href=""><span class="las la-receipt"></span>
-              <span>الامتحانات الفصلية</span>
-            </a>
-          </li>
-          <li>
-            <a href=""><span class="las la-receipt"></span>
-              <span>الإعدادات </span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href=""><span class="las la-clipboard-list"></span>
-        <span>المشاريع</span></a>
-      </li>
-      <li>
-        <a href=""><span class="las la-shopping-bag"></span>
-        <span>الطلبات</span></a>
-      </li>
-      <li>
-        <a href=""><span class="las la-receipt"></span>
-        <span>معلومات المدرسة</span>
+        <a href="{{route('admin.dashboard')}}" class="{{request()->is('admin/dashboard') ? 'active' : ''}}">
+          <span class="las la-igloo"></span>
+          <span>Dashboard</span>
         </a>
-      
-        <ul>
-          <li>
-            <a href=""><span class="las la-receipt"></span>
-              <span>إدارة الحلقات</span>
-            </a>
-          </li>
-          <li>
-            <a href=""><span class="las la-receipt"></span>
-              <span>إدارة الطلبة</span>
-            </a>
-          </li>
-          <li>
-            <a href=""><span class="las la-receipt"></span>
-              <span>إدارة المعلمين</span>
-            </a>
-          </li>
-        </ul>
+      </li>
+      <li>
+        <a href="{{route('categories.index')}}" class="{{request()->is('admin/categories') ? 'active' : ''}}">
+          <span class="las la-braille"></span>
+          <span>Categories</span>
+        </a>
+      </li>
+      <li>
+        <a href="" class=""><span class="las la-school"></span>
+        <span>Courses</span></a>
+      </li>
+      <li>
+        <a href="" class=""><span class="las la-pen-nib"></span>
+        <span>Articles</span></a>
+      </li>
+      <li>
+        <a href="" class=""><span class="las la-user-graduate"></span>
+        <span>Students</span></a>
+      </li>
+      <li>
+        <a href="" class=""><span class="las la-comments"></span>
+        <span>Comments</span></a>
+      </li>
 
-      </li>
-      <li>
-        <a href=""><span class="las la-user-circle"></span>
-        <span>الحسابات</span></a>
-      </li>
-      <li>
-        <a href=""><span class="las la-clipboard"></span>
-        <span>المهام</span></a>
-      </li>
+  
     </ul>
   </div>
 </div>

@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Changa:600");
 
 :root {
-  --main-color: #169b88;
+  --main-color: #4ca7cc;
   --color-dark: #1d2231;
   --text-grey: #8390a2;
-  --dark-main-color: #117a6b;
+  --dark-main-color: #347893;
   --side-widh: 280px;
-
 }
 
 * {
@@ -16,6 +15,10 @@
   text-decoration: none;
   list-style-type: none;
   font-family: "Changa", sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 .sidebar {
