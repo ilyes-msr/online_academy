@@ -178,7 +178,7 @@ a:focus {
 	font-size: 18px;
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
-	content: "\f0a5";
+	content: "\f07a";
 	margin-right: 10px;
 }
 
@@ -2581,7 +2581,7 @@ ul.custom li {
 }
 
 ul.custom li:before {
-	content: "\f303";
+	content: "\f061";
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
 	padding-right: 7px;
@@ -2961,7 +2961,7 @@ ul.checkmark li:before {
 
 .page {
 	background-color: #fff;
-	padding-top: 120px;
+	padding-top: 40px;
 	padding-bottom: 70px;
 }
 

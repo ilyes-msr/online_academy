@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\Dashboard\CourseMaterialsController;
 use App\Http\Controllers\Dashboard\CoursesController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -18,9 +20,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WebsiteController::class, 'index']);
+Route::get('/course/{course}', [WebsiteController::class, 'course'])->name('course.show');
 
 Route::middleware([
     'auth:sanctum',
@@ -38,4 +39,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/courses', CoursesController::class);
+    Route::resource('/{course_id}/materials', CourseMaterialsController::class);
 });

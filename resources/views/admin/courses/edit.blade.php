@@ -51,7 +51,7 @@
       <select name="published" id="published" class="form-select @error('published') is-invalid @enderror">
         <option value="">Choose</option>
         <option value="1" {{$course->published == 1 ? 'selected' : ''}}>Yes</option>
-        <option value="0" {{$category->published == 0 ? 'selected' : ''}}>No</option>
+        <option value="0" {{$course->published == 0 ? 'selected' : ''}}>No</option>
       </select>
     </div>
     @error('published')

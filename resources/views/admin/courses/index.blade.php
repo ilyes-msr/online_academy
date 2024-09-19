@@ -27,7 +27,9 @@
         <td>{{$course->price}}</td>
         <td>
           <br><br><br>
-          <a href="{{route('courses.edit', $course)}}" class="btn btn-warning" title="Edit"  data-title="This is a tooltip"><i class="las la-edit"></i></a> 
+          <a href="{{route('materials.index', $course->id)}}" class="btn btn-info" title="Add Content"><i class="las la-plus"></i> <small>Add Content</small></a>
+
+          <a href="{{route('courses.edit', $course)}}" class="btn btn-warning ml-1" title="Edit"><i class="las la-edit"></i></a> 
 
           <form action="{{route('courses.destroy', $course)}}" method="post" onsubmit="return confirmDelete()">
             @csrf

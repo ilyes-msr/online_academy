@@ -21,7 +21,7 @@ class CoursesController extends Controller
 
     public function index()
     {
-        $courses = $this->courses::with('category')->get();
+        $courses = $this->courses::with('category')->paginate(10);
         return view('admin.courses.index', compact('courses'));
     }
 
@@ -78,8 +78,6 @@ class CoursesController extends Controller
             // Store new image
             $course->image_path = $request->file('image_path')->store('images/courses', 'public');
         }
-
-        $course->published = false;
 
         $course->save();
 
