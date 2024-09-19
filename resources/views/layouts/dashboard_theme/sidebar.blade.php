@@ -19,7 +19,7 @@
         </a>
       </li>
       <li>
-        <a href="" class=""><span class="las la-school"></span>
+        <a href="{{route('courses.index')}}" class="{{request()->is('admin/courses') ? 'active' : ''}}"><span class="las la-school"></span>
         <span>Courses</span></a>
       </li>
       <li>
