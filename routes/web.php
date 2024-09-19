@@ -22,6 +22,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/course/{course}', [WebsiteController::class, 'course'])->name('course.show');
+Route::get('/courses', [WebsiteController::class, 'courses'])->name('courses');
+Route::get('/courses/{category_id}', [WebsiteController::class, 'courses_by_category'])->name('courses_by_category');
 
 Route::middleware([
     'auth:sanctum',
