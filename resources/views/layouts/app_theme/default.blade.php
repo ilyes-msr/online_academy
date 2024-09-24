@@ -34,6 +34,17 @@
         .active-language {
             background: #e6a411 !important;
           }
+          #logout-btn {
+            color: white;
+            border: none;
+            background: #035392;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          #logout-btn:hover {
+            /* background: #1790ec; */
+          }
       </style>
    </head>
 

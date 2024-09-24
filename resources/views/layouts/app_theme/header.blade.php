@@ -21,7 +21,7 @@
                     </a>
                  </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="{{url('/')}}">
+                    <a class="nav-link" href="{{route('courses')}}">
                       {{__('site.courses')}}
                     </a>
                 </li>
@@ -30,6 +30,7 @@
                     {{__('site.blog')}}
                   </a>
                 </li>
+                @guest
                 <li class="nav-item">
                   <a class="nav-link" href="{{route('login')}}">
                     {{__('site.login')}}
@@ -40,6 +41,29 @@
                     {{__('site.register')}}
                   </a>
                 </li>
+                @endguest
+                @auth
+                <li class="nav-item">
+                  
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     {{ auth()->user()->name}}
+                  </a>
+                  <div class="dropdown-menu pb-1">
+                     <a class="nav-link" href="#">
+                        My Courses
+                     </a>
+                     <a class="nav-link" href="{{route('profile.show')}}">
+                        Profile
+                     </a>
+                     <form method="POST" action="{{ route('logout') }}" class="text-center">
+                        @csrf
+                        <button type="submit" id="logout-btn" class="nav-link">Logout</button>
+                    </form>
+                  </div>
+               </li>
+                @endauth
                  <!-- menu item -->
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
