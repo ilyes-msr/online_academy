@@ -49,6 +49,7 @@ class WebsiteController extends Controller
     public function material($courseId, $materialId)
     {
         $material = CourseMaterial::findOrFail($materialId);
-        return view('material', compact('material'));
+        $comments = $material->comments;
+        return view('material', compact('material', 'comments'));
     }
 }

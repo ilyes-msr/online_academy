@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\CourseMaterialsController;
 use App\Http\Controllers\Dashboard\CoursesController;
@@ -36,6 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 Route::post('credit/checkout', [PurchaseController::class, 'creditCheckout'])->name('credit.checkout')->middleware('auth');
 Route::post('/purchase', [PurchaseController::class, 'purchase'])->name('purchase')->middleware('auth');
 Route::get('/material', [WebsiteController::class, 'material'])->name('material')->middleware('auth');
+
+Route::post('/add_comment', [CommentsController::class, 'add_comment'])->name('comment.add')->middleware('auth');
+Route::post('/add_reply', [CommentsController::class, 'add_reply'])->name('reply.add')->middleware('auth');
 
 Route::middleware(['auth', 'check.purchase:course_id'])->group(function () {
     Route::get('/{course_id}/material/{material_id}', [WebsiteController::class, 'material'])->name('material');

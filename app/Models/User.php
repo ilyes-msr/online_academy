@@ -81,4 +81,9 @@ class User extends Authenticatable
     {
         return $this->courses()->find($course_id) ? true : false;
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

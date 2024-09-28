@@ -33,7 +33,7 @@
            <hr/>
            <div class="row">
               <div class="credits col-sm-12 text-center">
-                  All Rights Reserved &copy; 2024
+                  All Rights Reserved &copy; {{date('Y') }}
               </div>
            </div>
            <!--/row-->
