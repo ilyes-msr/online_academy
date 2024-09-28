@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,8 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Billable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -67,5 +70,15 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role->name === "Admin";
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function hasPurchased($course_id)
+    {
+        return $this->courses()->find($course_id) ? true : false;
     }
 }

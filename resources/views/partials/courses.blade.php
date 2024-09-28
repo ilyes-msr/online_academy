@@ -17,7 +17,11 @@
         </div>
         <div class="text-center col-md-12">
           <a href="{{route('course.show', $course)}}" class="btn btn-secondary ">
-            <small>Check it out for ${{$course->price}}</small>
+            @if(auth()->user()?->hasPurchased($course->id))
+              <small>Access The Course</small> 
+            @else
+              <small>Check it out for ${{$course->price}}</small>
+            @endif
          </a>
        </div>
      </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\CourseMaterial;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -34,5 +35,20 @@ class WebsiteController extends Controller
         $courses = Course::where(['published' => true, 'category_id' => $category_id])->get();
         $categories = Category::all();
         return view('all_courses', compact('categories', 'courses', 'category_id', 'title'));
+    }
+    public function my_courses()
+    {
+        $title = "My Courses";
+        $courses = auth()->user()->courses;
+        // dd($courses);
+        $category_id = -1;
+        $categories = Category::all();
+        return view('all_courses', compact('categories', 'courses', 'title', 'category_id'));
+    }
+
+    public function material($courseId, $materialId)
+    {
+        $material = CourseMaterial::findOrFail($materialId);
+        return view('material', compact('material'));
     }
 }

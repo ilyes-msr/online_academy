@@ -51,7 +51,7 @@
                      {{ auth()->user()->name}}
                   </a>
                   <div class="dropdown-menu pb-1">
-                     <a class="nav-link" href="#">
+                     <a class="nav-link" href="{{route('courses.mine')}}">
                         My Courses
                      </a>
                      <a class="nav-link" href="{{route('profile.show')}}">
