@@ -4,7 +4,7 @@
    @foreach($courses as $course)
      <div class="col-lg-12 team-style3 bg-secondary pattern2">
         <a href="{{route('course.show', $course)}}">
-        <img src="{{asset('storage/' . $course->image_path)}}" class="img-fluid rounded" alt="" style="height: 200px; object-fit: cover"/>
+        <img src="{{asset('storage/' . $course->image_path)}}" class="img-fluid rounded" alt="" />
         </a>
         <div class="team-caption">
            <a href="{{route('course.show', $course)}}">

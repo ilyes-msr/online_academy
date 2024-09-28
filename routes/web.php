@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\Dashboard\ArticlesController;
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\CourseMaterialsController;
 use App\Http\Controllers\Dashboard\CoursesController;
@@ -17,6 +18,9 @@ Route::get('/courses', [WebsiteController::class, 'courses'])->name('courses');
 Route::get('/courses/{category_id}', [WebsiteController::class, 'courses_by_category'])->name('courses_by_category');
 Route::get('/mycourses', [WebsiteController::class, 'my_courses'])->name('courses.mine');
 
+Route::get('/article/{article:slug}', [ArticlesController::class, 'show'])->name('article.show');
+Route::get('/articles', [ArticlesController::class, 'all_articles'])->name('articles');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -31,6 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/courses', CoursesController::class);
+    Route::resource('/articles', ArticlesController::class);
     Route::resource('/{course_id}/materials', CourseMaterialsController::class);
 });
 

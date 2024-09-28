@@ -10,126 +10,41 @@
     <!-- /section-heading -->
     <!-- blog carousel -->
     <div class="carousel-3items owl-carousel owl-theme mt-0">
-       <!-- blog-box -->
+      @foreach($articles as $article)
        <div class="blog-box">
           <!-- image -->
           <a href="blog-single.html">
-             <div class="image"><img src="{{asset('theme_assets/img/blog/blogstyle2-1.jpg')}}" alt=""/></div>
+             <div class="image"><img src="{{asset('storage/' . $article->image_path)}}" alt="" style="height: 200px; object-fit: cover"/></div>
           </a>
           <!-- blog-box-caption -->
           <div class="blog-box-caption">
              <!-- date -->
-             <div class="date"><span class="day">12</span><span class="month">May</span></div>
-             <a href="blog-single.html">
-                <h4>Helping Your Child with Socialization</h4>
+             <div class="date">
+               @php
+                  $day = $article->created_at->format('d');  // Day (e.g., 28)
+                  $month = $article->created_at->format('F');  // Full month name (e.g., September)
+               @endphp
+               <span class="day">{{$day}}</span>
+               <span class="month"><small>{{$month}}</small></span>
+            </div>
+             <a href="{{route('article.show', $article->slug)}}">
+                <h4>{{$article->title}}</h4>
              </a>
-             <!-- /link -->
-             <p>
-                Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis...
-             </p>
+
+             <p>{!! \Illuminate\Support\Str::limit($article->body, 50) !!}</p>
+
           </div>
           <!-- blog-box-footer -->
           <div class="blog-box-footer">
-             <div class="author">Posted by<a href="#"><i class="fas fa-user"></i>Lauren Smith</a></div>
-             <div class="comments"><a href="blog-single.html"><i class="fas fa-comment"></i>23</a></div>
+             <div class="comments"><i class="fas fa-eye"></i>{{$article->nb_views}}</div>
              <!-- Button -->	 
              <div class="text-center col-md-12">
-                <a href="blog-single.html" class="btn btn-primary ">Read more</a>
+                <a href="{{route('article.show', $article->slug)}}" class="btn btn-primary btn-sm">Read more</a>
              </div>
           </div>
           <!-- /blog-box-footer -->
        </div>
-       <!-- /blog-box -->
-       <!-- blog-box -->
-       <div class="blog-box">
-          <!-- image -->
-          <a href="blog-single.html">
-             <div class="image"><img src="{{asset('theme_assets/img/blog/blogstyle2-2.jpg')}}" alt=""/></div>
-          </a>
-          <!-- blog-box-caption -->
-          <div class="blog-box-caption">
-             <!-- date -->
-             <div class="date"><span class="day">28</span><span class="month">June</span></div>
-             <a href="blog-single.html">
-                <h4>Our Healthy meals that toddlers love</h4>
-             </a>
-             <!-- /link -->
-             <p>
-                Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis...
-             </p>
-          </div>
-          <!-- blog-box-footer -->
-          <div class="blog-box-footer">
-             <div class="author">Posted by<a href="#"><i class="fas fa-user"></i>Jonas Doe</a></div>
-             <div class="comments"><a href="blog-single.html"><i class="fas fa-comment"></i>5</a></div>
-             <!-- Button -->	 
-             <div class="text-center col-md-12">
-                <a href="blog-single.html" class="btn btn-primary ">Read more</a>
-             </div>
-          </div>
-          <!-- /blog-box-footer -->
-       </div>
-       <!-- /blog-box -->
-       <!-- blog-box -->
-       <div class="blog-box">
-          <!-- image -->
-          <a href="blog-single.html">
-             <div class="image"><img src="{{asset('theme_assets/img/blog/blogstyle2-3.jpg')}}" alt=""/></div>
-          </a>
-          <!-- blog-box-caption -->
-          <div class="blog-box-caption">
-             <!-- date -->
-             <div class="date"><span class="day">02</span><span class="month">July</span></div>
-             <a href="blog-single.html">
-                <h4>20 Fun Activities to Do With Your Kids</h4>
-             </a>
-             <!-- /link -->
-             <p>
-                Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis...
-             </p>
-          </div>
-          <!-- blog-box-footer -->
-          <div class="blog-box-footer">
-             <div class="author">Posted by<a href="#"><i class="fas fa-user"></i>Lauren Smith</a></div>
-             <div class="comments"><a href="blog-single.html"><i class="fas fa-comment"></i>10</a></div>
-             <!-- Button -->	 
-             <div class="text-center col-md-12">
-                <a href="blog-single.html" class="btn btn-primary ">Read more</a>
-             </div>
-          </div>
-          <!-- /blog-box-footer -->
-       </div>
-       <!-- /blog-box -->
-       <!-- blog-box -->
-       <div class="blog-box">
-          <!-- image -->
-          <a href="blog-single.html">
-             <div class="image"><img src="{{asset('theme_assets/img/blog/blogstyle2-4.jpg')}}" alt=""/></div>
-          </a>
-          <!-- blog-box-caption -->
-          <div class="blog-box-caption">
-             <!-- date -->
-             <div class="date"><span class="day">18</span><span class="month">June</span></div>
-             <a href="blog-single.html">
-                <h4>Brain-Boosting Activities for Children</h4>
-             </a>
-             <!-- /link -->
-             <p>
-                Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis...
-             </p>
-          </div>
-          <!-- blog-box-footer -->
-          <div class="blog-box-footer">
-             <div class="author">Posted by<a href="#"><i class="fas fa-user"></i>Jonas Doe</a></div>
-             <div class="comments"><a href="blog-single.html"><i class="fas fa-comment"></i>11</a></div>
-             <!-- Button -->	 
-             <div class="text-center col-md-12">
-                <a href="blog-single.html" class="btn btn-primary ">Read more</a>
-             </div>
-          </div>
-          <!-- /blog-box-footer -->
-       </div>
-       <!-- /blog-box -->
+       @endforeach
     </div>
     <!-- /owl-carousel -->
  </div>

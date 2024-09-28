@@ -19,12 +19,16 @@
         </a>
       </li>
       <li>
-        <a href="{{route('courses.index')}}" class="{{request()->is('admin/courses') ? 'active' : ''}}"><span class="las la-school"></span>
-        <span>Courses</span></a>
+        <a href="{{route('courses.index')}}" class="{{request()->is('admin/courses') ? 'active' : ''}}">
+          <span class="las la-school"></span>
+          <span>Courses</span>
+        </a>
       </li>
       <li>
-        <a href="" class=""><span class="las la-pen-nib"></span>
-        <span>Articles</span></a>
+        <a href="{{route('articles.index')}}" class="{{request()->is('admin/articles') ? 'active' : ''}}">
+          <span class="las la-pen-nib"></span>
+          <span>Articles</span>
+      </a>
       </li>
       <li>
         <a href="" class=""><span class="las la-user-graduate"></span>

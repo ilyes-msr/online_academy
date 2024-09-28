@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseMaterial;
@@ -12,7 +13,8 @@ class WebsiteController extends Controller
     public function index()
     {
         $courses = Course::where('published', true)->get();
-        return view('welcome', compact('courses'));
+        $articles = Article::latest()->get();
+        return view('welcome', compact('courses', 'articles'));
     }
 
     public function course(Course $course)
