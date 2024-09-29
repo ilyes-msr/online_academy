@@ -31,14 +31,9 @@
       </a>
       </li>
       <li>
-        <a href="" class=""><span class="las la-user-graduate"></span>
+        <a href="{{route('students')}}" class="{{request()->is('admin/students*') ? 'active' : ''}}"><span class="las la-user-graduate"></span>
         <span>Students</span></a>
       </li>
-      <li>
-        <a href="" class=""><span class="las la-comments"></span>
-        <span>Comments</span></a>
-      </li>
-
   
     </ul>
   </div>

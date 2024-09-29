@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Course;
 use App\Models\CourseMaterial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class WebsiteController extends Controller
 {
@@ -27,23 +28,23 @@ class WebsiteController extends Controller
         $courses = Course::where('published', true)->get();
         $categories = Category::all();
         $category_id = -1;
-        $title = "All Courses";
+        $title = __('site.all_courses');
         return view('all_courses', compact('categories', 'courses', 'category_id', 'title'));
     }
 
     public function courses_by_category($category_id)
     {
-        $title = "Category: " . Category::find($category_id)->name;
+        $title = __('site.category') . ": " . Category::find($category_id)->name;
         $courses = Course::where(['published' => true, 'category_id' => $category_id])->get();
         $categories = Category::all();
         return view('all_courses', compact('categories', 'courses', 'category_id', 'title'));
     }
     public function my_courses()
     {
-        $title = "My Courses";
+        $title = __('site.my_courses');
         $courses = auth()->user()->courses;
         // dd($courses);
-        $category_id = -1;
+        $category_id = 0;
         $categories = Category::all();
         return view('all_courses', compact('categories', 'courses', 'title', 'category_id'));
     }

@@ -17,11 +17,21 @@
       <link rel="{{asset('theme_assets/apple-touch-icon')}}" sizes="57x57" href="apple-icon-57x57.png">
       <link rel="{{asset('theme_assets/apple-touch-icon')}}" sizes="72x72" href="apple-icon-72x72.png">
       <link rel="{{asset('theme_assets/apple-touch-icon')}}" sizes="114x114" href="apple-icon-114x114.png">
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme_assets/favicon.ico')}}">
+
+
+
       <!-- Bootstrap core CSS -->
       <link href="{{asset('theme_assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
       <!-- style CSS -->
-      <link href="{{asset('theme_assets/css/style.css')}}" rel="stylesheet">
+
+
+      @if (App::getLocale() == 'ar')
+        <link href="{{asset('theme_assets/css/style_rtl.css')}}" rel="stylesheet">
+      @else
+        <link href="{{asset('theme_assets/css/style.css')}}" rel="stylesheet">
+      @endif
+
       <!-- plugins CSS -->
       <link href="{{asset('theme_assets/css/plugins.css')}}" rel="stylesheet">
       <!-- Colors CSS -->
@@ -51,6 +61,10 @@
           .custom-dropdown-link:hover {
             color: #dea510 !important;
             text-decoration: #dea510 underline;
+          }
+          footer {
+            padding-top: 10px;
+            padding-bottom: 20px
           }
       </style>
    </head>

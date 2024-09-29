@@ -1,7 +1,16 @@
 @extends('layouts.app_theme.default')
 
-@section('title', __('All Courses'))
+@section('title', __('site.all_courses'))
 
+@section('styles')
+  <style>
+    body {
+      direction: rtl;
+      text-align: right
+    }
+  
+  </style>
+@endsection
 @section('content')
 <div class="page">
   <div class="container">
@@ -30,9 +39,9 @@
                     <div class="text-center col-md-12">
                       <a href="{{route('course.show', $course)}}" class="btn btn-secondary ">
                      @if(auth()->user()?->hasPurchased($course->id))
-                       <small>Access The Course</small> 
+                       <small>{{__('site.access_the_course')}}</small> 
                      @else
-                       <small>Check it out for ${{$course->price}}</small>
+                       <small>{{__('site.check_it_out_for')}} ${{$course->price}}</small>
                      @endif
                      </a>
                    </div>
@@ -46,13 +55,14 @@
         </div>
         <!-- /col-lg-9 -->
         <!-- ==== Sidebar ==== -->
+        @if($category_id != 0)
         <div id="sidebar" class="col-lg-3 h-50 sticky-top">
            <!--widget area-->
            <div class="widget-area notepad">
-              <h5 class="sidebar-header">Categories</h5>
+              <h5 class="sidebar-header">{{__('site.categories')}}</h5>
               <div class="list-group">
                 <a href="{{route('courses')}}" class="list-group-item list-group-item-action {{ $category_id == -1 ? 'active' : ''}}">
-                  All
+                  {{__('site.all')}}
                   </a>
                 @foreach($categories as $category)
                 <a href="{{route('courses_by_category', $category->id)}}" class="list-group-item list-group-item-action {{$category->id == $category_id ? 'active' : ''}}">
@@ -64,6 +74,7 @@
            </div>
            <!-- /widget-area -->
         </div>
+        @endif
         <!-- /sidebar -->
      </div>
      <!-- /row-->

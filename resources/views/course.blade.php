@@ -2,6 +2,18 @@
 
 @section('title', $course->title)
 
+@section('styles')
+   @if(App::getLocale() == 'ar')
+   <style>
+      body {
+         direction: rtl
+      }
+      h3, a, h6, h4, p, ul li, a {
+         text-align: right !important
+      }
+   </style>
+   @endif
+@endsection
 @section('content')
           <div class="page container">
             <div class="row">
@@ -21,17 +33,18 @@
                            <img src="{{asset('storage/' . $course->image_path)}}" class="img-fluid rounded" alt="">
                         </div>
                      </div>
-                     <h4 class="mt-5">About the course</h4>
+                     <h4 class="mt-5">{{__('site.about_the_course')}}</h4>
                      <p>
                       {{$course->description}}
                      </p>
-                     <h4 class="mt-3">Course Content</h4>
+                     <h4 class="mt-3">{{__('site.course_content')}}</h4>
                      @if(auth()->user()?->hasPurchased($course->id))
                         @foreach($course->course_materials as $material)
+                        <p>
                            <a href="{{route('material', ['course_id' => $course->id, 'material_id' => $material->id])}}">
                               {{$material->title}}
                            </a>
-                           <br>
+                        </p>
                         @endforeach
                      @else
                      <ul class="custom pl-0">
@@ -44,11 +57,12 @@
                      @if(auth()->user()?->hasPurchased($course->id))
 
                      @else
-                     <form action="{{route('credit.checkout')}}" method="POST">
-                        @csrf
-                        <input type="hidden" value="{{$course->id}}" name="course_id">
-                        <input class="custom-link float-left mt-5" type="submit" value="Buy this course for  ${{$course->price}} only" style="cursor: pointer">
-                     </form>
+                        <form action="{{route('credit.checkout')}}" method="POST">
+                           @csrf
+                           <input type="hidden" value="{{$course->id}}" name="course_id">
+                           <input class="custom-link {{App::getLocale() == 'ar' ? 'float-right' : 'float-left'}} mt-5" type="submit" value="{{__('site.buy_this_course_for')}}  ${{$course->price}} {{__('site.only')}}" style="cursor: pointer">
+                        </form>
+                     
                      @endif
                   </div>
                </div>

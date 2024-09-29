@@ -31,7 +31,7 @@
   </div>
   <div class="card-single">
     <div>
-      <h1>$6k</h1>
+      <h1>{{$articles_count}}</h1>
       <span>Articles</span>
     </div>
     <div>

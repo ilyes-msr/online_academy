@@ -14,18 +14,18 @@
            </span>
            </button>
            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
+              <ul class="navbar-nav {{App::getLocale() == 'ar' ? 'mr-auto' : 'ml-auto'}}">
                  <!-- menu item -->
-                 <li class="nav-item active">
+                 <li class="nav-item {{request()->is('/') ? 'active' : ''}}">
                     <a class="nav-link" href="{{url('/')}}">{{__('site.home')}}
                     </a>
                  </li>
-                 <li class="nav-item">
+                 <li class="nav-item {{request()->is('courses') ? 'active' : ''}}">
                     <a class="nav-link" href="{{route('courses')}}">
                       {{__('site.courses')}}
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{request()->is('articles') ? 'active' : ''}}">
                   <a class="nav-link" href="{{route('articles')}}">
                     {{__('site.blog')}}
                   </a>
@@ -51,18 +51,18 @@
                   <div class="dropdown-menu pb-1">
                      @admin
                         <a class="nav-link custom-dropdown-link" target="_blank" href="{{route('admin.dashboard')}}">
-                           Dashboard
+                           {{__('site.dashboard')}}
                         </a>
                      @endadmin
                      <a class="nav-link custom-dropdown-link" href="{{route('courses.mine')}}">
-                        My Courses
+                        {{__('site.my_courses')}}
                      </a>
                      <a class="nav-link custom-dropdown-link" href="{{route('profile.show')}}">
-                        Profile
+                        {{__('site.profile')}}
                      </a>
                      <form method="POST" action="{{ route('logout') }}" class="text-center">
                         @csrf
-                        <button type="submit" id="logout-btn" class="nav-link custom-dropdown-link">Logout</button>
+                        <button type="submit" id="logout-btn" class="nav-link custom-dropdown-link">{{__('site.logout')}}</button>
                     </form>
                   </div>
                </li>
@@ -70,14 +70,14 @@
                  <!-- menu item -->
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{__('site.language')}}
+                     <i class="fa fa-language"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="others-dropdown">
 
-                       <a class="dropdown-item {{ App::getLocale() == 'ar' ? 'active-language' : '' }}" href="{{ App::getLocale() == 'ar' ? '#' : route('lang.switch', ['locale' => 'ar']) }}">
+                       <a class="dropdown-item {{ App::getLocale() == 'ar' ? 'active-language text-right' : '' }}" href="{{ App::getLocale() == 'ar' ? '#' : route('lang.switch', ['locale' => 'ar']) }}">
                         العربية
                        </a>
-                       <a class="dropdown-item {{ App::getLocale() == 'en' ? 'active-language' : '' }}" href="{{ App::getLocale() == 'en' ? '#' : route('lang.switch', ['locale' => 'en']) }}">
+                       <a class="dropdown-item {{ App::getLocale() == 'en' ? 'active-language' : 'text-right' }}" href="{{ App::getLocale() == 'en' ? '#' : route('lang.switch', ['locale' => 'en']) }}">
                         English
                        </a>
                     </div>

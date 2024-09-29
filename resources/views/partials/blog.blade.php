@@ -4,7 +4,7 @@
  <div class="container">
     <!-- section heading -->  
     <div class="section-heading text-center">
-       <h2>{{__('site.latest_blog_posts')}}</h2>
+       <h3>{{__('site.latest_blog_posts')}}</h3>
        <p class="subtitle">{{ __('site.our_updates') }}</p>
     </div>
     <!-- /section-heading -->
@@ -13,7 +13,7 @@
       @foreach($articles as $article)
        <div class="blog-box">
           <!-- image -->
-          <a href="blog-single.html">
+          <a href="{{route('article.show', $article->slug)}}">
              <div class="image"><img src="{{asset('storage/' . $article->image_path)}}" alt="" style="height: 200px; object-fit: cover"/></div>
           </a>
           <!-- blog-box-caption -->
@@ -28,7 +28,7 @@
                <span class="month"><small>{{$month}}</small></span>
             </div>
              <a href="{{route('article.show', $article->slug)}}">
-                <h4>{{$article->title}}</h4>
+                <h6>{{$article->title}}</h6>
              </a>
 
              <p>{!! \Illuminate\Support\Str::limit($article->body, 50) !!}</p>
@@ -39,7 +39,7 @@
              <div class="comments"><i class="fas fa-eye"></i>{{$article->nb_views}}</div>
              <!-- Button -->	 
              <div class="text-center col-md-12">
-                <a href="{{route('article.show', $article->slug)}}" class="btn btn-primary btn-sm">Read more</a>
+                <a href="{{route('article.show', $article->slug)}}" class="btn btn-primary btn-sm">{{ __('site.read_more') }}</a>
              </div>
           </div>
           <!-- /blog-box-footer -->

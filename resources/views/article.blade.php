@@ -8,18 +8,26 @@
       padding-top: 10px !important
    }
 </style>
+@if(App::getLocale() == 'ar')
+<style>
+   body {
+      direction: rtl;
+      text-align: right
+   }
+</style>
+@endif
 @endsection
 @section('content')
             <!-- Jumbotron -->
                <div class="container" >
                   <!-- jumbo-heading -->
                   <div class="jumbo-heading" data-aos="fade-down">
-                     <h1>Blog</h1>
+                     <h1>{{__('site.blog')}}</h1>
                      <!-- Breadcrumbs -->
                      <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                           <li class="breadcrumb-item"><a href="{{route('articles')}}">Blog</a></li>
+                           <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('site.home')}}</a></li>
+                           <li class="breadcrumb-item"><a href="{{route('articles')}}">{{__('site.blog')}}</a></li>
                            <li class="breadcrumb-item active" aria-current="page">
                               {{$article->title}}
                            </li>
@@ -43,7 +51,7 @@
                            <i class="fas fa-calendar margin-icon"></i>
                            {{$article->created_at->diffForHumans()}}
                            &nbsp;&nbsp;  
-                           <i class="fas fa-eye margin-icon"></i>{{$article->nb_views}} views
+                           <i class="fas fa-eye margin-icon"></i>{{$article->nb_views}} {{__('site.views')}}
                         </div>
                         <hr>
                         <!-- Preview Image -->

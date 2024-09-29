@@ -1,24 +1,33 @@
 @extends('layouts.app_theme.default')
 
 @section('title', __('Blog'))
+
 @section('styles')
 <style>
    #page-wrapper {
       padding-top: 10px !important
    }
 </style>
+   @if(App::getLocale() == 'ar')
+   <style>
+      body {
+         direction: rtl;
+         text-align: right
+      }
+   </style>
+   @endif
 @endsection
 @section('content')
          <!-- Jumbotron -->
           <div class="container" >
              <!-- jumbo-heading -->
              <div class="jumbo-heading" data-aos="fade-down">
-                <h1>Blog</h1>
+                <h1>{{__('site.blog')}}</h1>
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                    <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('site.home')}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{__('site.blog')}}</li>
                    </ol>
                 </nav>
                 <!-- /breadcrumb -->
@@ -49,13 +58,13 @@
                          <div class="post-info text-muted">
                             <i class="fas fa-calendar margin-icon"></i>{{$article->created_at->diffForHumans()}}
                             &nbsp;&nbsp;
-                            <i class="fas fa-eye margin-icon"></i>{{$article->nb_views}} views
+                            <i class="fas fa-eye margin-icon"></i>{{$article->nb_views}} {{__('site.views')}}
                          </div>
                          <!-- excerpt -->
                          <p class="card-text mt-3">
                           {!! \Illuminate\Support\Str::limit($article->body, 70) !!}
                          </p>
-                         <a href="{{route('article.show', $article->slug)}}" class="btn btn-secondary">Read More &rarr;</a>
+                         <a href="{{route('article.show', $article->slug)}}" class="btn btn-secondary">{{__('site.read_more')}} {!!App::getLocale() == 'ar' ? '&larr;' : '&rarr;'!!}</a>
                       </div>
                       <!--card-footer -->
                    </div>

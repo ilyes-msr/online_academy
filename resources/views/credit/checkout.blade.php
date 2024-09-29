@@ -1,6 +1,6 @@
 @extends('layouts.app_theme.default')
 
-@section('title', 'Checkout Payment')
+@section('title', __('site.checkout'))
 
 @section('styles')
 <style>
@@ -30,18 +30,18 @@
 @section('content')
 <div class="container">
   <div class="header">  
-    <h3 class="my-3">Checkout</h3>
+    <h3 class="mb-3 mt-5 {{App::getLocale() == 'ar' ? 'text-right' : ''}}">{{__('site.checkout')}}</h3>
   </div>
-  <form method="POST" action="{{ route('purchase') }}" class="card-form mt-3 mb-3">
+  <form method="POST" action="{{ route('purchase') }}" class="card-form mt-3 mb-3 {{App::getLocale() == 'ar' ? 'text-right' : ''}}">
     @csrf
     <input type="hidden" name="payment_method" class="payment-method">
     <input type="hidden" name="course_id" value="{{encrypt($course_id)}}">
-    <input class="StripeElement mb-3" name="card_holder_name" placeholder="Card holder name" required>
+    <input class="StripeElement mb-3" name="card_holder_name" placeholder="{{__('site.card_holder_name')}}" required style="{{App::getLocale() == 'ar' ? 'direction: rtl' : ''}}">
         <div id="card-element"></div>
     <div id="card-errors" role="alert"></div>
     <div class="form-group mt-3">
         <button type="submit" class="btn btn-primary pay">
-            Pay ${{$price}}
+            {{__('site.pay')}} ${{$price}}
         </button>
     </div>
   </form> 

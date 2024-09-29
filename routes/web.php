@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\CoursesController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\Dashboard\StudentsController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::resource('/courses', CoursesController::class);
     Route::resource('/articles', ArticlesController::class);
     Route::resource('/{course_id}/materials', CourseMaterialsController::class);
+    Route::get('/students', [StudentsController::class, 'index'])->name('students');
 });
 
 Route::post('credit/checkout', [PurchaseController::class, 'creditCheckout'])->name('credit.checkout')->middleware('auth');
