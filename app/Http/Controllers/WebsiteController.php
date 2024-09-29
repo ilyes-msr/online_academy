@@ -54,4 +54,18 @@ class WebsiteController extends Controller
         $comments = $material->comments;
         return view('material', compact('material', 'comments'));
     }
+
+    public function article(Article $article)
+    {
+        $article->nb_views++;
+        $article->save();
+        return view('article', compact('article'));
+    }
+
+    public function articles()
+    {
+        $articles = Article::latest()->paginate(5);
+        $title = "Blog";
+        return view('all_articles', compact('articles', 'title'));
+    }
 }

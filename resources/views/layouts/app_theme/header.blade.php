@@ -43,23 +43,26 @@
                 </li>
                 @endguest
                 @auth
-                <li class="nav-item">
-                  
-                </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="others-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      {{ auth()->user()->name}}
                   </a>
                   <div class="dropdown-menu pb-1">
-                     <a class="nav-link" href="{{route('courses.mine')}}">
+                     @admin
+                        <a class="nav-link custom-dropdown-link" target="_blank" href="{{route('admin.dashboard')}}">
+                           Dashboard
+                        </a>
+                     @endadmin
+                     <a class="nav-link custom-dropdown-link" href="{{route('courses.mine')}}">
                         My Courses
                      </a>
-                     <a class="nav-link" href="{{route('profile.show')}}">
+                     <a class="nav-link custom-dropdown-link" href="{{route('profile.show')}}">
                         Profile
                      </a>
                      <form method="POST" action="{{ route('logout') }}" class="text-center">
                         @csrf
-                        <button type="submit" id="logout-btn" class="nav-link">Logout</button>
+                        <button type="submit" id="logout-btn" class="nav-link custom-dropdown-link">Logout</button>
                     </form>
                   </div>
                </li>

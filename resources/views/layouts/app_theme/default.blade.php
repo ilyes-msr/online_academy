@@ -45,6 +45,13 @@
           #logout-btn:hover {
             /* background: #1790ec; */
           }
+          .custom-dropdown-link {
+            transition: .3s all ease-in-out;
+          }
+          .custom-dropdown-link:hover {
+            color: #dea510 !important;
+            text-decoration: #dea510 underline;
+          }
       </style>
    </head>
 

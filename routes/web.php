@@ -18,8 +18,8 @@ Route::get('/courses', [WebsiteController::class, 'courses'])->name('courses');
 Route::get('/courses/{category_id}', [WebsiteController::class, 'courses_by_category'])->name('courses_by_category');
 Route::get('/mycourses', [WebsiteController::class, 'my_courses'])->name('courses.mine');
 
-Route::get('/article/{article:slug}', [ArticlesController::class, 'show'])->name('article.show');
-Route::get('/articles', [ArticlesController::class, 'all_articles'])->name('articles');
+Route::get('/article/{article:slug}', [WebsiteController::class, 'article'])->name('article.show');
+Route::get('/articles', [WebsiteController::class, 'articles'])->name('articles');
 
 Route::middleware([
     'auth:sanctum',
