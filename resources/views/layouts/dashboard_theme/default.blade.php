@@ -33,7 +33,12 @@
   <link href="https://cdn.datatables.net/v/bs5/dt-2.1.6/r-3.0.3/datatables.min.css" rel="stylesheet">
 
   @yield('styles')
-  <link rel="stylesheet" href=" {{asset('dashboard_assets/style.css')}}">
+
+  @if (App::getLocale() == 'ar')
+    <link rel="stylesheet" href=" {{asset('dashboard_assets/style-rtl.css')}}">
+  @else
+    <link rel="stylesheet" href=" {{asset('dashboard_assets/style.css')}}">
+  @endif
   
 </head>
 <body class="font-sans antialiased">

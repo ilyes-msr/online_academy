@@ -1,16 +1,16 @@
 @extends('layouts.dashboard_theme.default')
 
 @section('content')
-  <h1>Articles</h1>
-  <a href="{{route('articles.create')}}" class="btn btn-outline-primary">Add an article</a>
+  <h1>{{__('site.articles')}}</h1>
+  <a href="{{route('articles.create')}}" class="btn btn-primary">{{__('site.add_an_article')}}</a>
   <table class="table table-bordered mt-3" id="articles-table">
     <thead class="table-primary">
       <tr>
         <td>#</td>
-        <td>Image</td>
-        <td>Title</td>
-        <td>Views</td>
-        <td>Actions</td>
+        <td>{{__('site.image')}}</td>
+        <td>{{__('site.title')}}</td>
+        <td>{{__('site.views')}}</td>
+        <td>{{__('site.actions')}}</td>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -42,16 +42,20 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"></script>
+
   <script>
-  
   $(document).ready( function () {
       $('#articles-table').DataTable({
-        responsive: true
+        responsive: true,
+        @if(App::getLocale() == 'ar')
+          "language": {"url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"}
+        @endif
       });
       
   });
   function confirmDelete() {
-        return confirm("Are you sure you want to delete this article?");
+        return confirm("{{__('site.are_you_sure_you_want_to_delete_this_item')}}");
       }
     </script>
 @endsection

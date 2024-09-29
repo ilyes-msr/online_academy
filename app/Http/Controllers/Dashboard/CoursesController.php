@@ -45,7 +45,7 @@ class CoursesController extends Controller
 
         $course->save();
 
-        return redirect(route('courses.index'))->with('success', 'Course created successfully');
+        return redirect(route('courses.index'))->with('success', __('site.item_created_successfully'));
     }
 
     public function show(string $id)
@@ -81,7 +81,7 @@ class CoursesController extends Controller
 
         $course->save();
 
-        return redirect(route('courses.index'))->with('success', 'Course updated successfully');
+        return redirect(route('courses.index'))->with('success', __('site.item_updated_successfully'));
     }
 
     public function destroy(Course $course)
@@ -90,6 +90,6 @@ class CoursesController extends Controller
             unlink(public_path('storage/' . $course->image_path));
         }
         $course->delete();
-        return redirect(route('courses.index'))->with('success', 'Course deleted successfully');
+        return redirect(route('courses.index'))->with('success', __('site.item_deleted_successfully'));
     }
 }

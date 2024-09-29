@@ -52,7 +52,7 @@ class ArticlesController extends Controller
 
         $article->save();
 
-        return redirect(route('articles.index'))->with('success', 'Article created successfully');
+        return redirect(route('articles.index'))->with('success', __('site.item_created_successfully'));
     }
 
     public function createUniqueSlug($title, $model)
@@ -115,7 +115,7 @@ class ArticlesController extends Controller
         $article->slug = $this->createUniqueSlug($validated['title'], Article::class);
         $article->save();
 
-        return redirect(route('articles.index'))->with('success', 'Article updated successfully');
+        return redirect(route('articles.index'))->with('success', __('site.item_updated_successfully'));
     }
 
     /**
@@ -129,6 +129,6 @@ class ArticlesController extends Controller
         }
 
         $article->delete();
-        return redirect(route('articles.index'))->with('success', 'Article deleted successfully');
+        return redirect(route('articles.index'))->with('success', __('site.item_deleted_successfully'));
     }
 }

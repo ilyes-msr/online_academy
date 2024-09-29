@@ -1,0 +1,1 @@
+<a href="{{route($destination . '.index')}}" class="btn btn-secondary"> <i class="las la-arrow-{{App::getLocale() == 'ar' ? 'right' : 'left'}}"></i> {{__('site.back')}}</a>

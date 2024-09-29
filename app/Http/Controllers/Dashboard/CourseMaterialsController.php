@@ -60,7 +60,7 @@ class CourseMaterialsController extends Controller
             $material->course_id = $course_id;
             $material->save();
 
-            return redirect(route('materials.index', $course_id))->with('success', 'Material created successfully');
+            return redirect(route('materials.index', $course_id))->with('success', __('site.item_created_successfully'));
         } else {
             return redirect(route('materials.index', $course_id));
         }
@@ -96,7 +96,7 @@ class CourseMaterialsController extends Controller
 
         $material->save();
 
-        return redirect(route('materials.index', $course_id))->with('success', 'material updated successfully');
+        return redirect(route('materials.index', $course_id))->with('success', __('site.item_updated_successfully'));
     }
 
     /**
@@ -105,6 +105,6 @@ class CourseMaterialsController extends Controller
     public function destroy(string $course_id, CourseMaterial $material)
     {
         $material->delete();
-        return redirect(route('materials.index', $course_id))->with('success', 'materials deleted successfully');
+        return redirect(route('materials.index', $course_id))->with('success', __('site.item_deleted_successfully'));
     }
 }

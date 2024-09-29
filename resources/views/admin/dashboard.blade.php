@@ -5,7 +5,7 @@
   <div class="card-single">
     <div>
       <h1>{{$students_count}}</h1>
-      <span>Students</span>
+      <span>{{__('site.students')}}</span>
     </div>
     <div>
       <span class="las la-user-graduate"></span>
@@ -14,7 +14,7 @@
   <div class="card-single">
     <div>
       <h1>{{$courses_count}}</h1>
-      <span>Courses</span>
+      <span>{{__('site.courses')}}</span>
     </div>
     <div>
       <span class="las la-school"></span>
@@ -23,7 +23,7 @@
   <div class="card-single">
     <div>
       <h1>{{$categories_count}}</h1>
-      <span>Categories</span>
+      <span>{{__('site.categories')}}</span>
     </div>
     <div>
       <span class="las la-braille"></span>
@@ -32,7 +32,7 @@
   <div class="card-single">
     <div>
       <h1>{{$articles_count}}</h1>
-      <span>Articles</span>
+      <span>{{__('site.articles')}}</span>
     </div>
     <div>
       <span class="las la-pen-square"></span>

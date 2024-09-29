@@ -32,38 +32,38 @@
 @endsection
 
 @section('content')
-<a href="{{route('articles.index')}}" class="btn btn-secondary"> <i class="las la-arrow-left"></i> Back</a>
+	@include('admin.back_link', ['destination' => 'articles'])
 
-  <h3 class="my-3">Create New Article</h3>
+  <h3 class="my-3">{{__('site.create_new_article')}}</h3>
 
   <form action="{{route('articles.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-      <label for="title">Title</label>
-      <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Article Title" name="title" value="{{old('title')}}" id="title">
+      <label for="title">{{__('site.title')}}</label>
+      <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="{{__('site.enter_article_title')}}" name="title" value="{{old('title')}}" id="title">
     </div>
     @error('title')
       <div class="alert alert-danger mt-2">{{$message}}</div>
     @enderror
 
     <div class="mb-3">
-      <label for="image_path" class="form-label">Image</label>
+      <label for="image_path" class="form-label">{{__('site.image')}}</label>
       <input type="file" name="image_path" id="image_path" class="form-control @error('image_path') is-invalid @enderror" accept="image/*">{{old('image_path')}}
     </div>
     @error('image_path')
       <div class="alert alert-danger mt-2">{{$message}}</div>
     @enderror
     <img id="imagePreview" src="" alt="Image Preview" style="max-width: 300px; display: none; margin-bottom: 10px">
-    <p id="errorMsg" style="color: red; display: none;">Error ! <br>File size exceeds 4 MB.</p>
+    <p id="errorMsg" style="color: red; display: none;">{{__('site.error')}} ! <br>{{__('site.file_size_exceeds_4_mb')}}.</p>
 
     <div class="mb-3">
-      <label for="body">Body</label>
+      <label for="body">{{__('site.body')}}</label>
       <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror">{{old('body')}}</textarea>
     </div>
     @error('body')
       <div class="alert alert-danger mt-2">{{$message}}</div>
     @enderror
-    <button type="submit" class="btn btn-primary">Add</button>  
+    <button type="submit" class="btn btn-primary">{{__('site.add')}}</button>  
   </form>
 
 @endsection
@@ -114,6 +114,8 @@
 	Undo
 } from 'ckeditor5';
 
+import coreTranslations from 'ckeditor5/translations/ar.js';
+
 const editorConfig = {
 	toolbar: {
 		items: [
@@ -139,6 +141,12 @@ const editorConfig = {
 		],
 		shouldNotGroupWhenFull: false
 	},
+	@if(App::getLocale() == 'ar')
+	language: {
+		ui: 'ar',
+		content: 'ar'
+	},
+	@endif
 	plugins: [
 		AccessibilityHelp,
 		Autoformat,
@@ -180,6 +188,11 @@ const editorConfig = {
 		Underline,
 		Undo
 	],
+	@if(App::getLocale() == 'ar')
+		translations: [
+							coreTranslations,
+					],
+	@endif
 	heading: {
 		options: [
 			{
@@ -258,7 +271,6 @@ const editorConfig = {
 			reversed: true
 		}
 	},
-	placeholder: 'Type or paste your content here!',
 	table: {
 		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
 	}

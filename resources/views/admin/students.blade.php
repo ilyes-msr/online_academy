@@ -1,14 +1,14 @@
 @extends('layouts.dashboard_theme.default')
 
 @section('content')
-  <h1>Students</h1>
+  <h1>{{__('site.students')}}</h1>
   <table class="table table-bordered mt-3" id="students-table">
     <thead class="table-primary">
       <tr>
         <td>#</td>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Registration Date</td>
+        <td>{{__('site.name')}}</td>
+        <td>{{__('site.email')}}</td>
+        <td>{{__('site.reg_date')}}</td>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -28,10 +28,15 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"></script>
+
   <script>
   $(document).ready( function () {
       $('#students-table').DataTable({
-        responsive: true
+        responsive: true,
+        @if(App::getLocale() == 'ar')
+          "language": {"url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"}
+        @endif
       });
   });
   function confirmDelete() {

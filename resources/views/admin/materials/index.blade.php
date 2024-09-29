@@ -1,15 +1,15 @@
 @extends('layouts.dashboard_theme.default')
 
 @section('content')
-  <h1>Materials for the material: {{$course->title}}</h1>
-  <a href="{{route('materials.create', $course->id)}}" class="btn btn-outline-primary">Add a material</a>
+  <h1>{{__('site.materials_for_the_course')}}: {{$course->title}}</h1>
+  <a href="{{route('materials.create', $course->id)}}" class="btn btn-outline-primary">{{__('site.add_a_material')}}</a>
   <table class="table table-bordered mt-3" id="materials-table">
     <thead class="table-primary">
       <tr>
         <td>#</td>  
-        <td>Title</td>
-        <td>Video Link</td>
-        <td>Actions</td>
+        <td>{{__('site.title')}}</td>
+        <td>{{__('site.video_link')}}</td>
+        <td>{{__('site.actions')}}</td>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -39,15 +39,21 @@
 @endsection
 
 @section('scripts')
+  <script src="https://cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"></script>
+
   <script>
-  
   $(document).ready( function () {
       $('#materials-table').DataTable({
-        responsive: true
+        responsive: true,
+        @if(App::getLocale() == 'ar')
+          "language": {"url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"}
+        @endif
       });
   });
-    function confirmDelete() {
-          return confirm("Are you sure you want to delete this material?");
-        }
-    </script>
+  
+  function confirmDelete() 
+  {
+    return confirm("{{__('site.are_you_sure_you_want_to_delete_this_item')}}");
+  }
+  </script>
 @endsection

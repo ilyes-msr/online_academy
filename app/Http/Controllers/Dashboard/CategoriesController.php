@@ -34,7 +34,7 @@ class CategoriesController extends Controller
         $category->name = $data['name'];
         $category->save();
 
-        return redirect(route('categories.index'))->with('success', 'Cateogry created successfully');
+        return redirect(route('categories.index'))->with('success', __('site.item_created_successfully'));
     }
 
     public function edit($id)
@@ -48,12 +48,12 @@ class CategoriesController extends Controller
         $data = $request->validated();
         $category->name = $data['name'];
         $category->save();
-        return redirect(route('categories.index'))->with('success', 'Cateogry updated successfully');
+        return redirect(route('categories.index'))->with('success', __('site.item_updated_successfully'));
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect(route('categories.index'))->with('success', 'Cateogry deleted successfully');
+        return redirect(route('categories.index'))->with('success', __('site.item_deleted_successfully'));
     }
 }

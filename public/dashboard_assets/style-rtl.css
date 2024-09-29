@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Changa:600");
 
 :root {
-  --main-color: #169b88;
+  --main-color: #4ca7cc;
   --color-dark: #1d2231;
   --text-grey: #8390a2;
-  --dark-main-color: #117a6b;
+  --dark-main-color: #347893;
   --side-widh: 280px;
 
 }
@@ -18,10 +18,18 @@
   font-family: "Changa", sans-serif;
   direction: rtl;
 }
-
+ul {
+  padding-left: 0;
+}
+a {
+  text-decoration: none;
+}
+.btn-primary {
+  background: #4ba7cc !important;
+  border: none  !important;
+}
 .sidebar {
   border-radius: 60px 0 0 60px;
-
   width: var(--side-widh);
   position: fixed;
   right: 0;
@@ -30,7 +38,7 @@
   background: var(--main-color);
   z-index: 100;
   transition: width 300ms;
-  overflow-y: scroll;
+  overflow-y:visible
 }
 
 .sidebar-brand {
@@ -203,10 +211,14 @@ main {
   border-radius: 20px;
 }
 
+.card-single div:last-child span {
+  font-size: 3rem;
+  color: var(--main-color);
+}
+
 .card-single div:first-child span {
   color: var(--text-grey);
 }
-
 
 .recent-grid {
   margin-top: 3.5rem;
