@@ -13,10 +13,10 @@
                     </x-slot>
                     <x-slot name="content">
                         
-                        <x-dropdown-link href="{{ App::getLocale() == 'ar' ? '#' : route('lang.switch', ['locale' => 'ar']) }}" class="{{ App::getLocale() == 'ar' ? 'text-blue-400' : '' }}">
+                        <x-dropdown-link href="{{ App::getLocale() == 'ar' ? '#' : route('lang.switch', ['locale' => 'ar']) }}" class="{{ App::getLocale() == 'ar' ? 'bg-gray-500 text-white' : '' }}">
                             العربية
                         </x-dropdown-link>
-                        <x-dropdown-link href="{{ App::getLocale() == 'en' ? '#' : route('lang.switch', ['locale' => 'en']) }}" class="{{ App::getLocale() == 'en' ? 'text-blue-400' : '' }}">
+                        <x-dropdown-link href="{{ App::getLocale() == 'en' ? '#' : route('lang.switch', ['locale' => 'en']) }}" class="{{ App::getLocale() == 'en' ? 'bg-gray-500 text-white' : '' }}">
                             English
                         </x-dropdown-link>
 

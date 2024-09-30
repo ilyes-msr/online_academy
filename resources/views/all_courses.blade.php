@@ -3,13 +3,15 @@
 @section('title', __('site.all_courses'))
 
 @section('styles')
+@if(App::getLocale() == 'ar')
+
   <style>
     body {
       direction: rtl;
       text-align: right
     }
-  
   </style>
+@endif
 @endsection
 @section('content')
 <div class="page">
@@ -59,14 +61,16 @@
         <div id="sidebar" class="col-lg-3 h-50 sticky-top">
            <!--widget area-->
            <div class="widget-area notepad">
-              <h5 class="sidebar-header">{{__('site.categories')}}</h5>
+              <h5 class="sidebar-header" style="font-size: 1rem">{{__('site.categories')}}</h5>
               <div class="list-group">
                 <a href="{{route('courses')}}" class="list-group-item list-group-item-action {{ $category_id == -1 ? 'active' : ''}}">
-                  {{__('site.all')}}
+                  <span style="font-size: 1rem">{{__('site.all')}}</span>
                   </a>
                 @foreach($categories as $category)
                 <a href="{{route('courses_by_category', $category->id)}}" class="list-group-item list-group-item-action {{$category->id == $category_id ? 'active' : ''}}">
-                  {{$category->name}}
+                  <span style="font-size: 1rem">
+                  {{$category->name}} <span class="text-muted">({{$category->courses->count()}})</span>
+                </span>
                   </a>
                 @endforeach
               </div>
