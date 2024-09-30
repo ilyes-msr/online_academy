@@ -87,4 +87,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function getRedirectRoute(): string
+    {
+        return match ((int)$this->role_id) {
+            1 => 'admin/dashboard',
+            2 => '/',
+        };
+    }
 }
