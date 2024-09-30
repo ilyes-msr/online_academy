@@ -112,5 +112,10 @@ return [
   'something_went_wrong' => 'حدث خطأ ما',
   'wrong_credentials' => 'معلومات الدخول لا تطابق سجلاتنا',
   'already_registered' => 'مسجّل من قبل؟',
-
+  'explanation' => 'الشرح',
+  'comments' => 'التعليقات',
+  'add_a_comment' => 'أضف تعليقاً',
+  'enter_your_comment_here' => 'اكتب تعليقك هنا..',
+  'add_reply' => 'أضف ردّاً',
+  'reply' => 'ردّ',
 ];

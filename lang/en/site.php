@@ -109,5 +109,11 @@ return [
   'something_went_wrong' => 'Something went wrong',
   'wrong_credentials' => 'These credentials do not match our records.',
   'already_registered' => 'Already registered?',
+  'explanation' => 'Explanation',
+  'comments' => 'Comments',
+  'add_a_comment' => 'Add a comment',
+  'enter_your_comment_here' => 'Enter your comment here..',
+  'add_reply' => 'Add Reply',
+  'reply' => 'Reply',
 
 ];

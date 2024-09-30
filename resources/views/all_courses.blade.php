@@ -31,7 +31,7 @@
                        <a href="{{route('course.show', $course)}}">
                           <h4>{{$course->title}}</h4>
                        </a>
-                       <h6>{{$course->course_materials()->count()}} materials</h6>
+                       <h6>{{$course->course_materials()->count()}} {{__('site.materials')}}</h6>
                        <p>
                         {{ Str::limit($course->description, 50)}}
                        </p>

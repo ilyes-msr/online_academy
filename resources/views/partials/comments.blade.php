@@ -11,7 +11,7 @@
                       </div>
                       <div class="col-4">
                           <span class="cursor-pointer reply-button" style="cursor: pointer">
-                              <i class="fas fa-reply"></i> <span class="comment_date text-secondary">Reply</span>
+                              <i class="fas fa-reply"></i> <span class="comment_date text-secondary">{{__('site.reply')}}</span>
                           </span>
                       </div>
                   </div>
@@ -21,7 +21,7 @@
                       <form method="post" action="{{ route('reply.add') }}" class="reply" id="reply">
                           @csrf
                           <div class="form-group">
-                              <textarea class="form-control @error('comment_body') is-invalid @enderror" name="comment_body" placeholder="أضف ردًا ..."></textarea>
+                              <textarea class="form-control @error('comment_body') is-invalid @enderror" name="comment_body" placeholder="{{__('site.add_reply')}}"></textarea>
                               @error('comment_body')
                                   <span class="invalid-feedback">
                                       <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 
                             </div>
                           <div class="form-group">
-                              <input type="submit" class="btn btn-primary my-2 btn-sm" value="تعليق"/>
+                              <input type="submit" class="btn btn-primary my-2 btn-sm" value="{{__('site.add')}}"/>
                           </div>
                       </form>
 

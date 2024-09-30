@@ -79,6 +79,7 @@ class User extends Authenticatable
 
     public function hasPurchased($course_id)
     {
+        if ($this->isAdmin()) return true;
         return $this->courses()->find($course_id) ? true : false;
     }
 

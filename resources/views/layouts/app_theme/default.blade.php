@@ -17,9 +17,7 @@
       <link rel="{{asset('theme_assets/apple-touch-icon')}}" sizes="57x57" href="apple-icon-57x57.png">
       <link rel="{{asset('theme_assets/apple-touch-icon')}}" sizes="72x72" href="apple-icon-72x72.png">
       <link rel="{{asset('theme_assets/apple-touch-icon')}}" sizes="114x114" href="apple-icon-114x114.png">
-      <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme_assets/favicon.ico')}}">
-
-
+      <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme_assets/favico.png')}}">
 
       <!-- Bootstrap core CSS -->
       <link href="{{asset('theme_assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

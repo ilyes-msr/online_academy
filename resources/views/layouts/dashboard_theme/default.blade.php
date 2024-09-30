@@ -40,6 +40,9 @@
     <link rel="stylesheet" href=" {{asset('dashboard_assets/style.css')}}">
   @endif
   
+  {{-- icon --}}
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme_assets/favico.png')}}">
+
 </head>
 <body class="font-sans antialiased">
 
