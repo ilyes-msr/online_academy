@@ -10,6 +10,8 @@
         <td>{{__('site.image')}}</td>
         <td>{{__('site.title')}}</td>
         <td>{{__('site.category')}}</td>
+        <td>{{__('site.nb_materials')}}</td>
+        <td>{{__('site.nb_students')}}</td>
         <td>{{__('site.published')}}</td>
         <td>{{__('site.price')}}</td>
         <td>{{__('site.actions')}}</td>
@@ -23,6 +25,8 @@
         <td><img src="{{ asset('storage/' . $course->image_path)}}" alt="course image" class="img-fluid" style="width: 75px;"></td>
         <td>{{$course->title}}</td>
         <td>{{$course->category->name}}</td>
+        <td>{{$course->course_materials->count()}}</td>
+        <td>{{$course->users->count()}}</td>
         <td>{{$course->published ? __('site.yes') : __('site.no')}}</td>
         <td>{{$course->price}}</td>
         <td>

@@ -118,4 +118,9 @@ return [
   'enter_your_comment_here' => 'اكتب تعليقك هنا..',
   'add_reply' => 'أضف ردّاً',
   'reply' => 'ردّ',
+  'nb_courses' => 'عدد الدورات',
+  'nb_materials' => 'عدد الموادّ',
+  'nb_students' => 'عدد الطّلاب',
+  'nb_bought_courses' => 'عدد الدورات المشتراة',
+
 ];

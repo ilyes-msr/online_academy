@@ -115,5 +115,9 @@ return [
   'enter_your_comment_here' => 'Enter your comment here..',
   'add_reply' => 'Add Reply',
   'reply' => 'Reply',
+  'nb_courses' => 'Courses count',
+  'nb_materials' => 'Materials count',
+  'nb_students' => 'Students count',
+  'nb_bought_courses' => 'Number of courses',
 
 ];

@@ -8,6 +8,7 @@
       <tr>
         <td>#</td>
         <td>{{__('site.name')}}</td>
+        <td>{{__('site.nb_courses')}}</td>
         <td>{{__('site.actions')}}</td>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
       <tr>
         <td>{{$i++}}</td>
         <td>{{$category->name}}</td>
+        <td>{{$category->courses->count()}}</td>
         <td>
           <a href="{{route('categories.edit', $category)}}" class="btn"><i class="las la-edit"></i></a>
           <form action="{{route('categories.destroy', $category)}}" method="post">

@@ -9,6 +9,7 @@
         <td>{{__('site.name')}}</td>
         <td>{{__('site.email')}}</td>
         <td>{{__('site.reg_date')}}</td>
+        <td>{{__('site.nb_bought_courses')}}</td>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -19,6 +20,7 @@
         <td>{{$student->name}}</td>
         <td>{{$student->email}}</td>
         <td>{{$student->created_at->diffForHumans()}}</td>
+        <td>{{$student->courses->count()}}</td>
       </tr>
       @empty  
       <tr></tr>

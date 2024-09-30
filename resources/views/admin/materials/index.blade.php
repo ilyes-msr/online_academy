@@ -1,8 +1,8 @@
 @extends('layouts.dashboard_theme.default')
 
 @section('content')
-  <h1>{{__('site.materials_for_the_course')}}: {{$course->title}}</h1>
-  <a href="{{route('materials.create', $course->id)}}" class="btn btn-outline-primary">{{__('site.add_a_material')}}</a>
+  <h3>{{__('site.materials_for_the_course')}}: {{$course->title}}</h3>
+  <a href="{{route('materials.create', $course->id)}}" class="btn btn-primary mt-3">{{__('site.add_a_material')}}</a>
   <table class="table table-bordered mt-3" id="materials-table">
     <thead class="table-primary">
       <tr>
