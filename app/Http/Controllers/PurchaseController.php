@@ -5,9 +5,60 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PurchaseController extends Controller
 {
+    private $provider;
+
+    function __construct()
+    {
+        $this->provider = new PayPalClient;
+        $this->provider->setApiCredentials(config('paypal'));
+        $token = $this->provider->getAccessToken();
+        $this->provider->setAccessToken($token);
+    }
+
+    public function createPayment(Request $request)
+    {
+        $data = json_decode($request->getContent(), true);
+        $total = Course::find($data['courseId'])->price;
+
+        $order = $this->provider->createOrder([
+            'intent' => 'CAPTURE',
+            'purchase_units' => [
+                [
+                    'amount' => [
+                        'currency_code' => 'USD',
+                        'value' => $total
+                    ],
+                    'description' => 'Order Description'
+                ]
+            ],
+        ]);
+
+        return response()->json($order);
+    }
+
+    public function executePayment(Request $request)
+    {
+        $data = json_decode($request->getContent(), true);
+        $result = $this->provider->capturePaymentOrder($data['orderId']);
+        if ($result['status'] === 'COMPLETED') {
+            $course = Course::find($data['courseId']);
+            $userId = auth()->id();
+
+            $course->users()->attach($userId, [
+                'price' => $course->price,
+                'created_at' => now()
+            ]);
+
+            // $this->sendOrderConfirmationMail($books, auth()->user());
+
+        }
+        return response()->json($result);
+    }
+
     public function creditCheckout(Request $request)
     {
         $data = $request->validate([
