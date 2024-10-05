@@ -22,9 +22,7 @@
                    {{ session('success') }}
                </div>  
                @endif
-               <div style="display: none" id="success" class="col-md-8 text-center h3 p-4 bg-success text-light rounded">
-                  تمت عملية الشراء بنجاح
-               </div>
+
                <div class="col-lg-9 page-with-sidebar">
                   <div class="col-lg-12">
                      <div class="row">
@@ -72,7 +70,11 @@
                   </div>
                </div>
             </div>
+            <div style="display: none" id="success" class="col-md-8 text-center h3 p-4 bg-success text-light rounded">
+               تمت عملية الشراء بنجاح
+            </div>
          </div>
+
 @endsection
 
 @section('scripts')
@@ -80,34 +82,42 @@
    <script src="https://www.paypal.com/sdk/js?client-id=AQgxJhH0yQ7oytqc8UgPAL8NRfy-mgieyyz2xefs_n9jotFW7H0RlFJCZ8VLfcdENMXH5kPDQD4nVeSl&currency=USD"></script>
 
    <script>
-   paypal.Buttons({
-      // Sets up the transaction when a payment button is clicked
-      createOrder: (data, actions) => {
-         return fetch('/api/paypal/create-payment', {
-               method: 'POST', 
-               body: JSON.stringify({
-                  'courseId' : "{{$course->id}}"
-               })
-         }).then(function(res) {
-               return res.json();
-         }).then(function(orderData) {
-               return orderData.id;
-         })
-      },
+   if(document.querySelector('#paypal-button-container'))
+   {
+      paypal.Buttons({
+         // Sets up the transaction when a payment button is clicked
+         createOrder: (data, actions) => {
+            return fetch('/api/paypal/create-payment', {
+                  method: 'POST', 
+                  body: JSON.stringify({
+                     'courseId' : "{{$course->id}}"
+                  })
+            }).then(function(res) {
+                  return res.json();
+            }).then(function(orderData) {
+                  return orderData.id;
+            })
+         },
 
-      onApprove: (data, actions) => {
-         return fetch('/api/paypal/execute-payment', {
-               method: 'POST',
-               body: JSON.stringify({
-                  orderId: data.orderID,
-                  courseId : "{{$course->id}}"
-               })
-         }).then(function(res) {
-               return res.json();
-         }).then(function(orderData) {
-               $('#success').slideDown(200);
-         })
-      }
-   }).render('#paypal-button-container');
+         onApprove: (data, actions) => {
+         
+            return fetch('/api/paypal/execute-payment', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                     orderId: data.orderID,
+                     'courseId' : "{{$course->id}}",
+                     'userId' : "{{auth()->id()}}"
+                  })
+            }).then(function(res) {
+                  return res.json();
+            }).then(function(orderData) {
+                  $('#success').slideDown(200);
+                  setTimeout(() => {
+                     location.reload();                     
+                  }, 2000);
+            })
+         }
+      }).render('#paypal-button-container');
+   }
    </script>
 @endsection

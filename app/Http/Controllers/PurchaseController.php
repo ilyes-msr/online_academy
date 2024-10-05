@@ -6,6 +6,7 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
@@ -45,8 +46,9 @@ class PurchaseController extends Controller
         $data = json_decode($request->getContent(), true);
         $result = $this->provider->capturePaymentOrder($data['orderId']);
         if ($result['status'] === 'COMPLETED') {
+
             $course = Course::find($data['courseId']);
-            $userId = auth()->id();
+            $userId = $data['userId'];
 
             $course->users()->attach($userId, [
                 'price' => $course->price,
