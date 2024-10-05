@@ -10,6 +10,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Dashboard\StudentsController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\ChargilyPayController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -51,3 +52,7 @@ Route::post('/add_reply', [CommentsController::class, 'add_reply'])->name('reply
 Route::middleware(['auth', 'check.purchase:course_id'])->group(function () {
     Route::get('/{course_id}/material/{material_id}', [WebsiteController::class, 'material'])->name('material');
 });
+
+Route::post('chargilypay/redirect', [ChargilyPayController::class, "redirect"])->name("chargilypay.redirect");
+Route::get('chargilypay/back', [ChargilyPayController::class, "back"])->name("chargilypay.back");
+Route::post('chargilypay/webhook', [ChargilyPayController::class, "webhook"])->name("chargilypay.webhook_endpoint");

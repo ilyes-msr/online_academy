@@ -66,6 +66,12 @@
                      
                         <div class="d-inline-block" id="paypal-button-container"></div>
 
+                        <form action="{{route('chargilypay.redirect')}}" method="post">
+                           @csrf
+                           <input type="hidden" value="{{$course->id}}" name="courseId">
+                           <button type="submit" class="btn btn-primary">الدفع بالذهبية</button>
+                        </form>
+
                      @endif
                   </div>
                </div>
