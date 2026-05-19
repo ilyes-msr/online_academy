@@ -122,6 +122,6 @@ return [
   'nb_courses' => 'عدد الدورات',
   'nb_materials' => 'عدد الموادّ',
   'nb_students' => 'عدد الطّلاب',
-  'nb_bought_courses' => 'عدد الدورات المشتراة',
+  'nb_bought_courses' => 'عدد الدورات المشترات',
 
 ];
