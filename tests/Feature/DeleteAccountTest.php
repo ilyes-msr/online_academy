@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;
@@ -42,5 +43,29 @@ class DeleteAccountTest extends TestCase
             ->assertHasErrors(['password']);
 
         $this->assertNotNull($user->fresh());
+    }
+
+    public function test_admin_accounts_cannot_be_deleted(): void
+    {
+        if (! Features::hasAccountDeletionFeatures()) {
+            $this->markTestSkipped('Account deletion is not enabled.');
+        }
+
+        Role::unguard();
+        Role::create(['id' => 1, 'name' => 'Admin']);
+        Role::reguard();
+
+        $admin = User::factory()->create();
+        $admin->role_id = 1;
+        $admin->save();
+
+        $this->actingAs($admin);
+
+        Livewire::test(DeleteUserForm::class)
+            ->set('password', 'password')
+            ->call('deleteUser')
+            ->assertHasErrors(['password']);
+
+        $this->assertNotNull($admin->fresh());
     }
 }

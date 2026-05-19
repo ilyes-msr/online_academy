@@ -105,6 +105,7 @@ return [
   'confirm_password' => 'تأكيد كلمة المرور',
   'are_you_sure' => 'هل أنت متأكّد',
   'delete_account' => 'حذف الحساب',
+  'admin_cannot_delete_account' => 'لا يمكن حذف حساب المسؤول.',
   'cancel' => 'الغاء',
   'password' => 'كلمة المرور',
   'remember_me' => 'تذكرني',

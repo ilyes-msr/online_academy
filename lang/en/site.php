@@ -102,6 +102,7 @@ return [
   'confirm_password' => 'Confirm Password',
   'are_you_sure' => 'Are you sure?',
   'delete_account' => 'Delete Account',
+  'admin_cannot_delete_account' => 'Admin accounts cannot be deleted.',
   'cancel' => 'Cancel',
   'password' => 'Passsword',
   'remember_me' => 'Remebmer me',

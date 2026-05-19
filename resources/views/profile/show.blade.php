@@ -22,7 +22,7 @@
             @endif
 
 
-            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
+            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures() && ! auth()->user()->isAdmin())
 
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.delete-user-form')
