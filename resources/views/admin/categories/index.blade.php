@@ -34,14 +34,10 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"></script>
-
 <script>
     $(document).ready(function () {
         $('#categories-table').DataTable({
-            @if(App::getLocale() == 'ar')
-                "language": {"url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"}
-            @endif
+            @include('admin.partials.datatables-language')
         });
     });
 </script>

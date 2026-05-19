@@ -30,15 +30,11 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"></script>
-
   <script>
   $(document).ready( function () {
       $('#students-table').DataTable({
         responsive: true,
-        @if(App::getLocale() == 'ar')
-          "language": {"url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/ar.json"}
-        @endif
+        @include('admin.partials.datatables-language')
       });
   });
   function confirmDelete() {
